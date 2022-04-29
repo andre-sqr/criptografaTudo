@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CriptografaTudo</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>Criptografa<em>Tudo</em></h1>
+        <button class="mode_btn" id="modeBtn" onclick="darkOn()">Modo Escuro</button>
+    </header>
+    
+    <div class="main_container" id="mainContainer">
+        <form>
+
+            <div class="form_div">
+                <label>Escolha o tipo de encriptação:</label>
+                <select id="typeSelection">
+                    <option selected disabled value="">Selecione</option>
+                    <option value="cesar">Cifra de césar</option>
+                    <option value="base">Base64</option>
+                </select>
+            </div>
+
+            <div class="form_div">
+                <label for="codeordecode">Eu desejo...</label>
+                <label><input type="radio" id="codeordecode" name="codeordecode" value="1">Codificar</label>
+                <label><input type="radio" id="codeordecode" name="codeordecode" value="-1">Decodificar</label>
+            </div>
+
+            <div class="form_div">
+                <label for="deslocamento">Digite o valor do deslocamento:</label>
+                <input type="text" nome="deslocamento" id="deslocamento">
+            </div>
+
+            <div class="form_div">
+                <label class="textMessage_label">Escreva sua mensagem:</label>
+                <textarea id="textMessage"></textarea>
+            </div>
+
+            <div class="form_div">
+                <button id="allDone">Confirmar</button>
+            </div>
+        </form>
+
+        
+    </div>
+    <div class="result_area" id="resultArea">
+        
+    </div>
+    
+    <footer>
+        <p>Desenvolvido por <a href="https://github.com/andre-sqr">André Siqueira</a></p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
