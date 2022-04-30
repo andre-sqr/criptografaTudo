@@ -13,13 +13,19 @@ function darkOn () {
 
 // Codificador/decodificador cifra de César
 
-function codifica (texto, passe) {
+function cesar (texto, desloc, valor) {
     var textoCodigo = ''
     var elementoSomado = 0
-    for (let i = 0; i <= texto.length; i++) {
-     elementoSomado = texto.charCodeAt(i)
-     elementoSomado += Number(passe)
-     textoCodigo += String.fromCharCode(elementoSomado);
+    for (var i = 0; i <= texto.length; i++) {
+        if ((texto.charCodeAt(i) >= 65 && texto.charCodeAt(i) <= 90) || (texto.charCodeAt(i) >= 97 && texto.charCodeAt(i) <= 122)) {
+            console.log('Entrou!')
+            elementoSomado = (Number(texto.charCodeAt(i)) - 65) 
+            elementoSomado += (Number(desloc) * valor) % 26
+            elementoSomado += 65
+            textoCodigo += String.fromCharCode(elementoSomado);
+        } else {
+            textoCodigo += String.fromCharCode(texto.charCodeAt(i));
+        }
     }
     console.log(textoCodigo);
     var areaResultado = document.querySelector('#resultArea')
@@ -38,17 +44,15 @@ botaoConfirma.addEventListener("click", function (event) {
     var textoMensagem = document.querySelector('#textMessage').value
     var tipoSelecao = document.querySelector('#typeSelection').value
     var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
-
+    
     if (textoMensagem != '' || tipoSelecao == 'cifra') {
-        codifica (textoMensagem, numeroDeslocamento)
+        cesar (textoMensagem, numeroDeslocamento, codificarOuDecodificar)
+        
+    } else if (textoMensagem != '' || tipoSelecao == 'base') {
         
     } else {
         alert('Coloque uma mensagem para ser codificada')
     }
-    console.log(numeroDeslocamento)
-    console.log(textoMensagem)
-    console.log(tipoSelecao)
-    console.log(codificarOuDecodificar)
 }
 )
 
