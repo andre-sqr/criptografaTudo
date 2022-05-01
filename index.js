@@ -49,7 +49,16 @@ function cesar (texto, desloc) {
 
 // Codificador/decodificador de Base64
 
-// FUNÇÃO AINDA A SER
+function base(mensagem) {
+    var baseTexto = ''
+    var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
+    if (codificarOuDecodificar == 'code') {
+        baseTexto = btoa(mensagem)
+    } else if (codificarOuDecodificar == 'decode') {
+        baseTexto = atob(mensagem)
+    }
+    makesBox(baseTexto)
+}
 
 botaoConfirma.addEventListener("click", function (event) {
     event.preventDefault()
@@ -60,7 +69,7 @@ botaoConfirma.addEventListener("click", function (event) {
     if (textoMensagem != '' && tipoSelecao == 'cesar') {
         cesar (textoMensagem, numeroDeslocamento)
     } else if (textoMensagem != '' && tipoSelecao == 'base') {
-        
+        base(textoMensagem)
     } else {
         alert('Coloque uma mensagem para ser codificada')
     }
