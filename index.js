@@ -10,45 +10,56 @@ function darkOn () {
     body.style.backgroundColor = 'black';
 }
 
+// Cria caixa de texto do resultado
+
+function makesBox (texto) {
+var areaResultado = document.querySelector('#resultArea')
+var resultadoP = document.createElement('p')
+resultadoP.innerHTML = `O resultado do seu texto é: <br>${texto}`
+resultadoP.style.fontFamily = 'Arial'
+areaResultado.style.display = 'flex'
+areaResultado.style.justifyContent = 'center'
+areaResultado.style.textAlign = 'center'
+areaResultado.append(resultadoP)
+}
+
 
 // Codificador/decodificador cifra de César
 
-function cesar (texto, desloc, valor) {
+function cesar (texto, desloc) {
+    var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
     var textoCodigo = ''
-    var elementoSomado = 0
-    for (var i = 0; i <= texto.length; i++) {
-        if ((texto.charCodeAt(i) >= 65 && texto.charCodeAt(i) <= 90) || (texto.charCodeAt(i) >= 97 && texto.charCodeAt(i) <= 122)) {
-            console.log('Entrou!')
-            elementoSomado = (Number(texto.charCodeAt(i)) - 65) 
-            elementoSomado += (Number(desloc) * valor) % 26
-            elementoSomado += 65
-            textoCodigo += String.fromCharCode(elementoSomado);
+    var passo = parseInt(desloc)
+    for (var i = 0; i < texto.length; i++) {
+        var numLetra = texto[i].charCodeAt()
+        if (numLetra >= 65 && numLetra <= 90) {
+            if (codificarOuDecodificar == 'code') {
+                var elementoSomado = (numLetra - 65 + passo) % 26
+                textoCodigo += String.fromCharCode(elementoSomado + 65)
+            } else if (codificarOuDecodificar == 'decode') {
+                var elementoSomado = (numLetra - 65 - passo + 26) % 26
+                textoCodigo += String.fromCharCode(elementoSomado + 65)
+            }
         } else {
-            textoCodigo += String.fromCharCode(texto.charCodeAt(i));
+            textoCodigo += String.fromCharCode(numLetra);
         }
     }
-    console.log(textoCodigo);
-    var areaResultado = document.querySelector('#resultArea')
-    var resultadoP = document.createElement('p')
-    resultadoP.innerHTML = `O resultado do seu texto é: <br>${textoCodigo}`
-    resultadoP.style.fontFamily = 'Arial'
-    areaResultado.style.display = 'flex'
-    areaResultado.style.justifyContent = 'center'
-    areaResultado.style.textAlign = 'center'
-    areaResultado.append(resultadoP)
+    makesBox(textoCodigo)
 }
+
+// Codificador/decodificador de Base64
+
+// FUNÇÃO AINDA A SER
 
 botaoConfirma.addEventListener("click", function (event) {
     event.preventDefault()
     var numeroDeslocamento = document.querySelector('#deslocamento').value;
     var textoMensagem = document.querySelector('#textMessage').value
     var tipoSelecao = document.querySelector('#typeSelection').value
-    var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
     
-    if (textoMensagem != '' || tipoSelecao == 'cifra') {
-        cesar (textoMensagem, numeroDeslocamento, codificarOuDecodificar)
-        
-    } else if (textoMensagem != '' || tipoSelecao == 'base') {
+    if (textoMensagem != '' && tipoSelecao == 'cesar') {
+        cesar (textoMensagem, numeroDeslocamento)
+    } else if (textoMensagem != '' && tipoSelecao == 'base') {
         
     } else {
         alert('Coloque uma mensagem para ser codificada')
