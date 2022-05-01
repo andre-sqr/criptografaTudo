@@ -10,7 +10,6 @@
 <body>
     <header>
         <h1>Criptografa<em>Tudo</em></h1>
-        <button class="mode_btn" id="modeBtn" onclick="darkOn()">Modo Escuro</button>
     </header>
     
     <div class="main_container" id="mainContainer">
@@ -27,13 +26,13 @@
 
             <div class="form_div">
                 <label for="codeordecode">Eu desejo...</label>
-                <label><input type="radio" id="codeordecode" name="codeordecode" value="1">Codificar</label>
-                <label><input type="radio" id="codeordecode" name="codeordecode" value="-1">Decodificar</label>
+                <label><input type="radio" id="codeordecode" name="codeordecode" value="code" onclick="mudarTexto()">Codificar</label>
+                <label><input type="radio" id="codeordecode" name="codeordecode" value="decode" onclick="mudarTexto()">Decodificar</label>
             </div>
 
-            <div class="form_div">
-                <label for="deslocamento">Digite o valor do deslocamento:</label>
-                <input type="text" nome="deslocamento" id="deslocamento">
+            <div class="form_div" id="divDeslocamento">
+                <label for="deslocamento" id="deslocamentoLabel">Digite o valor do deslocamento:</label>
+                <input type="number" nome="deslocamento" id="deslocamento" min="0" max="26">
             </div>
 
             <div class="form_div">
@@ -41,8 +40,8 @@
                 <textarea id="textMessage"></textarea>
             </div>
 
-            <div class="form_div">
-                <button id="allDone">Confirmar</button>
+            <div class="form_div" id="buttonDiv">
+                <button id="allDone">Codifica mensagem</button>
             </div>
         </form>
 

@@ -1,14 +1,7 @@
 // definição de variáveis para DOM
 
-var mainContainer = document.querySelector('#mainContainer')
-var body = document.body
+var container = document.getElementById('#mainContainer')
 var botaoConfirma = document.querySelector('#allDone')
-
-// Modo Escuro
-
-function darkOn () {
-    body.style.backgroundColor = 'black';
-}
 
 // Cria caixa de texto do resultado
 
@@ -60,19 +53,48 @@ function base(mensagem) {
     makesBox(baseTexto)
 }
 
+// Botão
+
+// var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
+
+// function mudarTexto() {
+//    if (document.getElementById(allDone).innerHTML == "Codificar mensagem")
+//    {
+//        document.getElementById(allDone).innerHTML = "Decodificar mensagem";
+//    }
+//    else 
+//    {
+//      document.getElementById(allDone).innerHTML = "Codificar mensagem";
+//    }
+// } // Preciso fazer o texto mudar (TO DO)
+
+
 botaoConfirma.addEventListener("click", function (event) {
     event.preventDefault()
     var numeroDeslocamento = document.querySelector('#deslocamento').value;
     var textoMensagem = document.querySelector('#textMessage').value
-    var tipoSelecao = document.querySelector('#typeSelection').value
+    var tipoSelecao = document.querySelector('#typeSelection')
     
-    if (textoMensagem != '' && tipoSelecao == 'cesar') {
+    if (textoMensagem != '' && tipoSelecao.value == 'cesar') {
         cesar (textoMensagem, numeroDeslocamento)
-    } else if (textoMensagem != '' && tipoSelecao == 'base') {
+    } else if (textoMensagem != '' && tipoSelecao.value == 'base') {
         base(textoMensagem)
     } else {
         alert('Coloque uma mensagem para ser codificada')
     }
 }
-)
+);
 
+// Remover label e input de deslocamento quando Base64 é selecionado (TO DO)
+
+tipoSelecao.addEventListener('click', function (event) {
+    event.preventDefault()
+    var tipoSelecao = document.getElementById('typeSelection')
+    var divDeslocamento = document.getElementById('divDeslocamento')
+    if (tipoSelecao.value == 'cesar') {
+        divDeslocamento.style.display = 'flex';
+    } else {
+        divDeslocamento.style.display = 'none';
+    }
+}
+);
