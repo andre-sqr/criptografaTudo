@@ -85,12 +85,12 @@ botaoConfirma.addEventListener("click", function (event) {
 }
 );
 
-// Remover label e input de deslocamento quando Base64 é selecionado (TO DO)
+// Remove label e input de deslocamento quando Base64 é selecionado
 
-tipoSelecao.addEventListener('click', function (event) {
-    event.preventDefault()
-    var tipoSelecao = document.getElementById('typeSelection')
-    var divDeslocamento = document.getElementById('divDeslocamento')
+var tipoSelecao = document.getElementById('typeSelection')
+var divDeslocamento = document.getElementById('divDeslocamento')
+
+tipoSelecao.addEventListener('click', function () {
     if (tipoSelecao.value == 'cesar') {
         divDeslocamento.style.display = 'flex';
     } else {
