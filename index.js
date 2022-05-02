@@ -1,7 +1,13 @@
 // definição de variáveis para DOM
 
-var container = document.getElementById('#mainContainer')
+var container = document.getElementById('mainContainer')
 var botaoConfirma = document.querySelector('#allDone')
+var tipoSelecao = document.getElementById('typeSelection')
+var divDeslocamento = document.getElementById('divDeslocamento')
+var btnDiv = document.getElementById('buttonDiv')
+
+// Botão
+
 
 // Cria caixa de texto do resultado
 
@@ -15,7 +21,6 @@ areaResultado.style.justifyContent = 'center'
 areaResultado.style.textAlign = 'center'
 areaResultado.append(resultadoP)
 }
-
 
 // Codificador/decodificador cifra de César
 
@@ -53,27 +58,25 @@ function base(mensagem) {
     makesBox(baseTexto)
 }
 
-// Botão
+// Botão: Interações e eventos
 
-// var codificarOuDecodificar = document.querySelector('input[type = radio]:checked').value
+var tipoCode = document.querySelector('#codeRadio')
+var tipoDecode = document.querySelector('#decodeRadio')
 
-// function mudarTexto() {
-//    if (document.getElementById(allDone).innerHTML == "Codificar mensagem")
-//    {
-//        document.getElementById(allDone).innerHTML = "Decodificar mensagem";
-//    }
-//    else 
-//    {
-//      document.getElementById(allDone).innerHTML = "Codificar mensagem";
-//    }
-// } // Preciso fazer o texto mudar (TO DO)
+tipoCode.addEventListener('change', function () {
+    botaoConfirma.value = 'Codificar'
+}
+)
+
+tipoDecode.addEventListener('change', function () {
+    botaoConfirma.value = 'Decodificar'
+})
 
 
 botaoConfirma.addEventListener("click", function (event) {
     event.preventDefault()
     var numeroDeslocamento = document.querySelector('#deslocamento').value;
     var textoMensagem = document.querySelector('#textMessage').value
-    var tipoSelecao = document.querySelector('#typeSelection')
     
     if (textoMensagem != '' && tipoSelecao.value == 'cesar') {
         cesar (textoMensagem, numeroDeslocamento)
@@ -87,8 +90,6 @@ botaoConfirma.addEventListener("click", function (event) {
 
 // Remove label e input de deslocamento quando Base64 é selecionado
 
-var tipoSelecao = document.getElementById('typeSelection')
-var divDeslocamento = document.getElementById('divDeslocamento')
 
 tipoSelecao.addEventListener('click', function () {
     if (tipoSelecao.value == 'cesar') {

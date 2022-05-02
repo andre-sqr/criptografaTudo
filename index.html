@@ -13,7 +13,7 @@
     </header>
     
     <div class="main_container" id="mainContainer">
-        <form>
+        <form class="forms">
 
             <div class="form_div">
                 <label>Escolha o tipo de encriptação:</label>
@@ -26,8 +26,8 @@
 
             <div class="form_div">
                 <label for="codeordecode">Eu desejo...</label>
-                <label><input type="radio" id="codeordecode" name="codeordecode" value="code" onclick="mudarTexto()">Codificar</label>
-                <label><input type="radio" id="codeordecode" name="codeordecode" value="decode" onclick="mudarTexto()">Decodificar</label>
+                <label><input type="radio" id="codeRadio" name="codeordecode" value="code" onclick="mudarTexto()">Codificar</label>
+                <label><input type="radio" id="decodeRadio" name="codeordecode" value="decode" onclick="mudarTexto()">Decodificar</label>
             </div>
 
             <div class="form_div" id="divDeslocamento">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="form_div" id="buttonDiv">
-                <button id="allDone">Codifica mensagem</button>
+                <input type="button" id="allDone" value="Codificar"></input>
             </div>
         </form>
 
