@@ -12,6 +12,10 @@ var btnDiv = document.getElementById('buttonDiv')
 // Cria caixa de texto do resultado
 
 function makesBox (texto) {
+var remocao = document.querySelector('p')
+if (remocao) {
+    remocao.remove()
+}
 var areaResultado = document.querySelector('#resultArea')
 var resultadoP = document.createElement('p')
 resultadoP.innerHTML = `O resultado do seu texto é: <br>${texto}`
