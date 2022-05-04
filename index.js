@@ -38,6 +38,14 @@ function cesar (texto, desloc) {
                 var elementoSomado = (numLetra - 65 - passo + 26) % 26
                 textoCodigo += String.fromCharCode(elementoSomado + 65)
             }
+        } else if (numLetra >= 97 && numLetra <= 122) {
+            if (codificarOuDecodificar == 'code') {
+                var elementoSomado = (numLetra - 97 + passo) % 26
+                textoCodigo += String.fromCharCode(elementoSomado + 97)
+            } else if (codificarOuDecodificar == 'decode') {
+                var elementoSomado = (numLetra - 97 - passo + 26) % 26
+                textoCodigo += String.fromCharCode(elementoSomado + 97)
+            }
         } else {
             textoCodigo += String.fromCharCode(numLetra);
         }
