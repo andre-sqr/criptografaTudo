@@ -103,7 +103,7 @@ botaoConfirma.addEventListener("click", function (event) {
 // Remove label e input de deslocamento quando Base64 é selecionado
 
 
-tipoSelecao.addEventListener('click', function () {
+tipoSelecao.addEventListener('change', function () {
     if (tipoSelecao.value == 'cesar') {
         divDeslocamento.style.display = 'flex';
     } else {
